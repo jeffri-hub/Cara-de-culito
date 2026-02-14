@@ -12,10 +12,9 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
+    height:100vh;
     text-align:center;
     overflow:hidden;
-    padding:20px;
 }
 
 /* Corazones animados */
@@ -25,7 +24,6 @@ body{
     color: rgba(255, 75, 110, 0.7);
     animation: fall linear infinite;
     font-size:20px;
-    z-index:0;
 }
 
 @keyframes fall{
@@ -39,30 +37,20 @@ body{
     padding:30px;
     border-radius:20px;
     box-shadow:0 10px 25px rgba(0,0,0,0.2);
-    max-width:450px;
-    width:100%;
+    max-width:400px;
     position:relative;
     z-index:2;
 }
 
 h1{
     color:#ff4b6e;
-    font-size:26px;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    font-size:16px;
-    color:#777;
-    margin-bottom:15px;
+    font-size:20px;
 }
 
 .hidden{
     opacity:0;
     transition:1s;
-    margin-top:20px;
-    line-height:1.6;
-    color:#444;
+    margin-top:15px;
 }
 
 .show{
@@ -70,24 +58,19 @@ h1{
 }
 
 button{
-    margin-top:15px;
-    padding:12px 22px;
+    margin-top:20px;
+    padding:10px 20px;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
     background:#ff4b6e;
     color:white;
     font-size:16px;
     cursor:pointer;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
-}
-
-button:hover{
-    transform:scale(1.05);
 }
 
 .time{
-    margin-top:10px;
-    font-size:17px;
+    margin-top:15px;
+    font-size:18px;
     color:#555;
 }
 </style>
@@ -109,30 +92,25 @@ for(let i=0;i<25;i++){
 </script>
 
 <div class="card">
-    <h1>Para mi hermana favorita 💖</h1>
-    <div class="subtitle">Con amor de tu hermano 😎</div>
+    <h1>
+    Para ti cara de culo que siempre me vives jodiendo, molestando, ignorando y no queriendome para nada 😂  
+    te hago este pequeño presente para que te sientas amada y querida hoy por pena de parte de tu hermano el más bello del mundo 😎💖
+    </h1>
 
     <div class="time" id="timeTogether"></div>
 
-    <button onclick="showMessage()">Presiona aquí 💌</button>
-    <br>
+    <button onclick="showMessage()">Presiona aquí 💖</button>
     <button onclick="toggleMusic()">🎵 Música</button>
 
     <p id="hiddenMessage" class="hidden">
-    Para ti cara de culo que siempre me vives jodiendo, molestando, ignorando y no queriendome para nada en ningun momento
-    te hago este pequeño presente para que te cientas amada y querida hoy "por pena" de parte de tu hermano el mas bello de este mundo
-    y de cualquier otro si señor....te hago esto para que deje de ser fea y te pongas una funda en esa cara toda fea Dios mio....
-
-    Pero tambien para recordarte que Hoy no solo es el Dia de las parejas y las amistades, tambien del amor y eso lo que te tengo ati amor "dique"
-    por ser la hermita insoportable que tengo y adoro con todo mi corazons, esa mona que siempre esta cuando necesito una mano,
-    esa cara de culo que siempre voy cuidar y joder en todo momento pero sobre todo para esa adopta que se crio y crecio a mi lado
-    compartiendo todo tipo de momentos juntos... donde tus abrazos y besos fueron un alivio para mi, donde puedo encontrar consuelo
-    cuando mas lo necesite y en donde puedo chismear y hablar con confianza....
-    Te amo mucho macañemu fofo 🥰
+        Pero también para recordarte que hoy no solo es el día de las parejas y amistades,  
+        también es el día del amor y eso es lo que te tengo a ti 💕  
+        gracias por estar siempre, por aguantarme, por tus abrazos y por crecer conmigo.  
+        Te amo mucho macañemu fofo 🥰
     </p>
 </div>
 
-<!-- Música -->
+<!-- Música Donaty -->
 <div id="music-container" style="display:none;">
   <iframe 
     width="0" 
@@ -160,15 +138,23 @@ function toggleMusic() {
   }
 }
 
-// Tiempo: 17 años
-const startDate = new Date();
-startDate.setFullYear(startDate.getFullYear() - 17);
+// Fecha real de nacimiento: 14 enero 2009
+const startDate = new Date("2009-01-14T00:00:00");
 
 function updateTime(){
     const now = new Date();
-    const diff = now - startDate;
+    let years = now.getFullYear() - startDate.getFullYear();
 
-    const years = 17;
+    // Ajustar si aún no ha cumplido años este año
+    const hasHadBirthday =
+        now.getMonth() > startDate.getMonth() ||
+        (now.getMonth() === startDate.getMonth() && now.getDate() >= startDate.getDate());
+
+    if(!hasHadBirthday){
+        years--;
+    }
+
+    const diff = now - startDate;
     const days = Math.floor(diff / (1000*60*60*24)) % 365;
     const hours = Math.floor(diff / (1000*60*60)) % 24;
     const minutes = Math.floor(diff / (1000*60)) % 60;
@@ -176,6 +162,8 @@ function updateTime(){
 
     document.getElementById("timeTogether").innerHTML =
         `Han pasado ${years} años, ${days} días, ${hours}h ${minutes}m ${seconds}s 💞`;
+}
+
 }
 
 setInterval(updateTime, 1000);
