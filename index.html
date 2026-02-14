@@ -3,182 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <title>Para mi hermana 💖</title>
+
 <style>
-    body{
-        margin:0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        text-align:center;
-        overflow:hidden;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* Corazones animados */
+.heart{
+    position: fixed;
+    top: -10px;
+    color: rgba(255, 75, 110, 0.7);
+    animation: fall linear infinite;
+    font-size:20px;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(110vh);
     }
-    .card{
-        background:white;
-        padding:30px;
-        border-radius:20px;
-        box-shadow:0 10px 25px rgba(0,0,0,0.2);
-        max-width:400px;
-        position:relative;
-    }
-    h1{
-        color:#ff4b6e;
-    }
-    .hidden{
-        opacity:0;
-        transition:1s;
-        margin-top:15px;
-    }
-    .show{
-        opacity:1;
-    }
-    button{
-        margin-top:20px;
-        padding:10px 20px;
-        border:none;
-        border-radius:10px;
-        background:#ff4b6e;
-        color:white;
-        font-size:16px;
-        cursor:pointer;
-    }
-    .time{
-        margin-top:15px;
-        font-size:18px;
-        color:#555;
-    }
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    max-width:400px;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    color:#ff4b6e;
+    font-size:20px;
+}
+
+.hidden{
+    opacity:0;
+    transition:1s;
+    margin-top:15px;
+}
+
+.show{
+    opacity:1;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#ff4b6e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.time{
+    margin-top:15px;
+    font-size:18px;
+    color:#555;
+}
 </style>
 </head>
+
 <body>
 
-<div class="card">
-    <h1>Para ti cara de culo que siempre me vives jodiendo, molestando, ignorando y no queriendome para nada en ningun momento
-    te hago este pequeño presente para que te cientas amada y querida hoy "por pena" de parte de tu hermano el mas bello de este mundo
-    y de cualquier otro si señor....te hago esto para que deje de ser fea y te pongas una funda en esa cara toda  fea Dios mio....</h1>
-
-    <div class="time" id="timeTogether"></div>
-
-    <button onclick="showMessage()">Presiona aquí 💖</button>
-
-    <p id="hiddenMessage" class="hidden">
-        Pero tambien para recordarte que Hoy no solo es el Dia de las parejas y las amistades, tambien del amor y eso lo que te tengo ati amor "dique" por ser la hermita insoportable que tengo y adoro
-      con todo mi corazons, esa mona que siempre esta cuando necesito uan mano, esa cara de culo que siempre voy cuidar y joder en todo mento
-      pero sobre todo para esa adopta que se crio y crecio a mi lado compartiendo todo tipo de momentos juntos...donde tus abrazos y besos fueron un alivio para mi
-      donde puedo encontrar consulo cuando mas lo necesite y en donde puedo chismear y hablar con confianza....Te amo mucho macañemu fofo 🥰
-    </p>
-
-   <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Para mi hermana 💖</title>
-<style>
-    body{
-        margin:0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        text-align:center;
-        overflow:hidden;
-    }
-    .card{
-        background:white;
-        padding:30px;
-        border-radius:20px;
-        box-shadow:0 10px 25px rgba(0,0,0,0.2);
-        max-width:400px;
-        position:relative;
-    }
-    h1{
-        color:#ff4b6e;
-    }
-    .hidden{
-        opacity:0;
-        transition:1s;
-        margin-top:15px;
-    }
-    .show{
-        opacity:1;
-    }
-    button{
-        margin-top:20px;
-        padding:10px 20px;
-        border:none;
-        border-radius:10px;
-        background:#ff4b6e;
-        color:white;
-        font-size:16px;
-        cursor:pointer;
-    }
-    .time{
-        margin-top:15px;
-        font-size:18px;
-        color:#555;
-    }
-</style>
-</head>
-<body>
-
-<div class="card">
-    <h1>Tu mensaje principal aquí 💌</h1>
-
-    <div class="time" id="timeTogether"></div>
-
-    <button onclick="showMessage()">Presiona aquí 💖</button>
-
-    <p id="hiddenMessage" class="hidden">
-        Tu mensaje oculto aquí ✨
-    </p>
-
-    <audio id="music" loop>
-        <source src="TU_LINK_DE_MUSICA_AQUI.mp3" type="audio/mpeg">
-    </audio>
-</div>
-
+<!-- Corazones -->
 <script>
-function showMessage(){
-    document.getElementById("hiddenMessage").classList.add("show");
-    document.getElementById("music").play();
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*5)+"s";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    document.body.appendChild(heart);
 }
-
-// Tiempo: 17 años exactos
-const startDate = new Date();
-startDate.setFullYear(startDate.getFullYear() - 17);
-
-function updateTime(){
-    const now = new Date();
-    const diff = now - startDate;
-
-    const years = 17;
-    const days = Math.floor(diff / (1000*60*60*24)) % 365;
-    const hours = Math.floor(diff / (1000*60*60)) % 24;
-    const minutes = Math.floor(diff / (1000*60)) % 60;
-    const seconds = Math.floor(diff / 1000) % 60;
-
-    document.getElementById("timeTogether").innerHTML =
-        `Han pasado ${years} años, ${days} días, ${hours}h ${minutes}m ${seconds}s 💞`;
-}
-
-setInterval(updateTime, 1000);
 </script>
 
-</body>
-</html>
+<div class="card">
+    <h1>
+    Para ti cara de culo que siempre me vives jodiendo, molestando, ignorando y no queriendome para nada 😂  
+    te hago este pequeño presente para que te sientas amada y querida hoy por pena de parte de tu hermano el más bello del mundo 😎💖
+    </h1>
 
+    <div class="time" id="timeTogether"></div>
+
+    <button onclick="showMessage()">Presiona aquí 💖</button>
+    <button onclick="toggleMusic()">🎵 Música</button>
+
+    <p id="hiddenMessage" class="hidden">
+        Pero también para recordarte que hoy no solo es el día de las parejas y amistades,  
+        también es el día del amor y eso es lo que te tengo a ti 💕  
+        gracias por estar siempre, por aguantarme, por tus abrazos y por crecer conmigo.  
+        Te amo mucho macañemu fofo 🥰
+    </p>
+</div>
+
+<!-- Música Donaty -->
+<div id="music-container" style="display:none;">
+  <iframe 
+    width="0" 
+    height="0"
+    src="https://www.youtube.com/embed/5Q4YpQ1F4yI?autoplay=1&loop=1&playlist=5Q4YpQ1F4yI"
+    frameborder="0"
+    allow="autoplay">
+  </iframe>
 </div>
 
 <script>
 function showMessage(){
     document.getElementById("hiddenMessage").classList.add("show");
-    document.getElementById("music").play();
 }
 
-// Tiempo: 17 años exactos
+let musicPlaying = false;
+function toggleMusic() {
+  const container = document.getElementById("music-container");
+  if (!musicPlaying) {
+    container.style.display = "block";
+    musicPlaying = true;
+  } else {
+    container.style.display = "none";
+    musicPlaying = false;
+  }
+}
+
+// Tiempo: 17 años
 const startDate = new Date();
 startDate.setFullYear(startDate.getFullYear() - 17);
 
