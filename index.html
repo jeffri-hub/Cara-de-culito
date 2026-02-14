@@ -110,7 +110,7 @@ for(let i=0;i<25;i++){
     </p>
 </div>
 
-<!-- Música Donaty -->
+<!-- Música -->
 <div id="music-container" style="display:none;">
   <iframe 
     width="0" 
@@ -138,24 +138,30 @@ function toggleMusic() {
   }
 }
 
-// Fecha real de nacimiento: 14 enero 2009
-const startDate = new Date("2009-01-14T00:00:00");
+/* ===== CONTADOR REAL DESDE 14 ENERO 2009 ===== */
+const birthDate = new Date("2009-01-14T00:00:00");
 
 function updateTime(){
     const now = new Date();
-    let years = now.getFullYear() - startDate.getFullYear();
 
-    // Ajustar si aún no ha cumplido años este año
-    const hasHadBirthday =
-        now.getMonth() > startDate.getMonth() ||
-        (now.getMonth() === startDate.getMonth() && now.getDate() >= startDate.getDate());
+    // Calcular años reales
+    let years = now.getFullYear() - birthDate.getFullYear();
+    const birthdayThisYear = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
 
-    if(!hasHadBirthday){
+    if (now < birthdayThisYear) {
         years--;
     }
 
-    const diff = now - startDate;
-    const days = Math.floor(diff / (1000*60*60*24)) % 365;
+    // Último cumpleaños
+    const lastBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+    if (now < lastBirthday) {
+        lastBirthday.setFullYear(now.getFullYear() - 1);
+    }
+
+    // Diferencia desde el último cumpleaños
+    const diff = now - lastBirthday;
+
+    const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor(diff / (1000*60*60)) % 24;
     const minutes = Math.floor(diff / (1000*60)) % 60;
     const seconds = Math.floor(diff / 1000) % 60;
@@ -164,9 +170,8 @@ function updateTime(){
         `Han pasado ${years} años, ${days} días, ${hours}h ${minutes}m ${seconds}s 💞`;
 }
 
-}
-
 setInterval(updateTime, 1000);
+updateTime();
 </script>
 
 </body>
